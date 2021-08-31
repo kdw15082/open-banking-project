@@ -22,8 +22,11 @@ const AuthResult = () => {
             redirect_uri: "http://localhost:3000/authResult",
             grant_type: "authorization_code",
         };
+        //전달하는 정보의 sendData(jsObject)선언)
+
 
         const encodedSendDdata = queryString.stringify(sendData);
+        //전달하는 sendData 형식의 변경
 
         const option = {
             method: "POST",
@@ -35,7 +38,8 @@ const AuthResult = () => {
         };
 
         axios(option).then((response) =>{
-            console.log(response);
+            console.log(response.data.access_token);
+            setAccessToken(response.data.access_token);
         })
 
     };
