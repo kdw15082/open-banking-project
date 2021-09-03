@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddUser from "./pages/AddUser";
 import AuthResult from "./pages/AuthResult";
+import Main from "./pages/Main";
+
 
 function App() {
   return (
@@ -11,6 +13,9 @@ function App() {
        </Route>
        <Route path="/authResult">
          <AuthResult></AuthResult>
+       </Route>
+       <Route path="/main">
+         <Main></Main>
        </Route>
      </Switch>
    </Router>
