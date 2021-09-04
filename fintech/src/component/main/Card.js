@@ -40,7 +40,15 @@ const ButtonBlock = styled.div`
 `;
 
 const Card = ({ bankName, fintechUseNo }) => {
-  return (<div></div>
+  return (
+      <CardBlock>
+          <CardTitle>{bankName}</CardTitle>
+          <FintechUseNo>{fintechUseNo}</FintechUseNo>
+          <ButtonBlock>
+              <QrButton>qr코드</QrButton>
+              <BalanceButton>잔액조회</BalanceButton>
+          </ButtonBlock>
+      </CardBlock>
   );
 };
 
