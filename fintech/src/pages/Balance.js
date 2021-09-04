@@ -8,7 +8,7 @@ import axios from "axios";
 const Balance = () => {
     const {search} = useLocation();
     const {fintechUseNo} = queryString.parse(search);
-    const [balance, setBalance] = useState();
+    const [balance, setBalance] = useState({});
     console.log(fintechUseNo);
 
     const genTransId = () => {
@@ -37,13 +37,18 @@ const Balance = () => {
         };
         axios(option).then(({data}) =>{
             console.log(data)
+            setBalance(data)
         })
     };
 
     return (
         <div>
             <Header title="잔액조회"></Header>
-            <BalanceCard></BalanceCard>
+            <BalanceCard
+                bankName={balance.bank_name}
+                fintechNo={balance.fintech_use_num}
+                balance={balance.balance_amt}
+            ></BalanceCard>
         </div>
     )
 }
