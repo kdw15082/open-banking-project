@@ -9,6 +9,12 @@ const Balance = () => {
     const {fintechUseNo} = queryString.parse(search);
     const [balance, setBalance] = useState();
 
+    const genTransId = () => {
+        let countnum = Math.floor(Math.random() * 1000000000) + 1;
+        let transId = "M202113062U" + countnum; //이용기관번호 (본인번호) 입력
+        return transId;
+      };
+
     useEffect(() =>{
       getBalanceData();  
     },[]);
