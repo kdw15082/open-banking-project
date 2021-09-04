@@ -3,11 +3,13 @@ import BalanceCard from '../component/balance/BalanceCard'
 import Header from '../component/Header'
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
+import axios from "axios";
 
 const Balance = () => {
     const {search} = useLocation();
     const {fintechUseNo} = queryString.parse(search);
     const [balance, setBalance] = useState();
+    console.log(fintechUseNo);
 
     const genTransId = () => {
         let countnum = Math.floor(Math.random() * 1000000000) + 1;
@@ -20,7 +22,22 @@ const Balance = () => {
     },[]);
 
     const getBalanceData = () =>{
-
+        const accessToken = localStorage.getItem("accessToken");
+        const option={
+            method: "GET",
+            url : `/v2.0/account/balance/fin_num`,
+            headers:{
+                "Authorization": `Bearer ${accessToken}`
+            },
+            params:{
+                "bank_tran_id" : genTransId(),
+                "fintech_use_num": fintechUseNo,
+                "tran_dtime" : "20210901010100"
+            },
+        };
+        axios(option).then(({data}) =>{
+            console.log(data)
+        })
     };
 
     return (
