@@ -71,7 +71,53 @@ const ModalCard = ({bankName, fintechUseNo, tofintechno}) => {
       };
       axios(option).then(({ data }) => {
         console.log(data);
+        if(data.rsp_code ==="A0000"){
+            deposit();
+        }
       });
+    }
+
+    const deposit = () =>{
+        const twoLeggedToken=
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMTEzMDYyIiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjM4NjExMzkwLCJqdGkiOiI4ZmEzZTZlZC02ZmZjLTRkZTYtOTk0NS1iZjlmZGI3MjI2NmMifQ.xC9nUF6-odNw8XVU6qZ6v4S6bPyOLyDeuqoLXn15Ia0"
+        const option = {
+            method: "POST",
+            url: "/v2.0/transfer/deposit/fin_num",
+            headers: {
+            Authorization: `Bearer ${twoLeggedToken}`,
+        },
+        data: {
+            cntr_account_type: "N",
+            cntr_account_num: "200000000001",
+            wd_pass_phrase: "NONE",
+            wd_print_content: "이체테스트",
+            name_check_option: "on",
+            tran_dtime: "20190910101921",
+            req_cnt: "1",
+            req_list: [
+            {
+            tran_no: "1",
+            bank_tran_id: genTransId(),
+            fintech_use_num: "120211306288932376767287",
+            print_content: "이체테스트",
+            tran_amt: "5000",
+            req_client_name: "김동욱",
+            req_client_bank_code: "097", 
+            req_client_account_num: "100000000001",
+            req_client_num: "HONGGILDONG1234",
+            transfer_purpose: "ST"
+            }
+            ]
+            
+
+        },
+        }
+        axios(option).then(({data})=>{
+            console.log(data)
+            if(data.rsp_code ==="A0000"){
+                alert("결제 완료");
+            }
+        })
     }
     return (
         <div>

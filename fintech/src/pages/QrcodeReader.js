@@ -62,7 +62,7 @@ const QrcodeReader = () => {
                 onRequestClose={closeModal}
                 ariaHideApp={false}
                 >
-                    <ModalWithDraw></ModalWithDraw>
+                    <ModalWithDraw tofintechno={result}></ModalWithDraw>
                 </Modal>
         </div>
     )
