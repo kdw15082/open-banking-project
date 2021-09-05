@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import Header from '../component/Header'
 import QrReader from "react-web-qr-reader";
 import Modal from "react-modal";
+import ModalWithDraw from '../component/withdraw/ModalWithDraw';
+
 
 const CustomStyles = {
     overlay: {
@@ -60,7 +62,7 @@ const QrcodeReader = () => {
                 onRequestClose={closeModal}
                 ariaHideApp={false}
                 >
-                    <h1>모달</h1>
+                    <ModalWithDraw></ModalWithDraw>
                 </Modal>
         </div>
     )
