@@ -36,7 +36,11 @@ const ModalWithDraw = ({tofintechno}) => {
     return (
         <ModalWithdrawBlock>
             <Slider {...settings}>
-                <ModalCard></ModalCard>
+                <ModalCard
+                    bankName="test"
+                    fintechUseNo="test"
+                    tofintechno="test"
+                ></ModalCard>
             </Slider>
         </ModalWithdrawBlock>
     )
