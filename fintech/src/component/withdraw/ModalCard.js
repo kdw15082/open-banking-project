@@ -42,6 +42,36 @@ const ModalCard = ({bankName, fintechUseNo, tofintechno}) => {
 
     const handleWithdraw = ()=>{
         //사용자 출금 요청 발생
+    var sendData = JSON.stringify({
+        bank_tran_id: genTransId(),
+        cntr_account_type: "N",
+        cntr_account_num: "100000000001",
+        dps_print_content: "출금테스트",
+        fintech_use_num: "120211306288932376767287",
+        tran_amt: amount,
+        tran_dtime: "20190910101921",
+        req_client_name: "김동욱", 
+        req_client_fintech_use_num : "120211306288932376767287",
+        req_client_num: "HONGGILDONG1234",
+        transfer_purpose: "ST",
+        recv_client_name: "김동욱", 
+        recv_client_bank_code: "097", 
+        recv_client_account_num: "100000000001"
+        });
+    //전달하는 정보의 JsObject 선언
+
+
+    const option = {
+        method: "POST",
+        url: "/v2.0/transfer/withdraw/fin_num",
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        data: sendData,
+      };
+      axios(option).then(({ data }) => {
+        console.log(data);
+      });
     }
     return (
         <div>
@@ -50,7 +80,7 @@ const ModalCard = ({bankName, fintechUseNo, tofintechno}) => {
                 <FintechUseNo>{fintechUseNo}</FintechUseNo>
                 <p>{tofintechno}에 출금이체를 발생시킵니다.</p>
                 <input onChange={handleAmountChange}></input>
-                <WithDrawButton>결제하기</WithDrawButton>
+                <WithDrawButton onClick={handleWithdraw}>결제하기</WithDrawButton>
             </ModalCardBlock>
             
         </div>
