@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import axios from "axios";
 import ModalCard from "./ModalCard";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const ModalWithdrawBlock = styled.div`
   display: flex;
@@ -16,7 +19,7 @@ const ModalWithdrawBlock = styled.div`
 const ModalWithDraw = ({tofintechno}) => {
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -53,7 +56,6 @@ const ModalWithDraw = ({tofintechno}) => {
     return (
         <ModalWithdrawBlock>
             <Slider {...settings}>
-                <>
                 {acountList.map((account)=>{
                     return(
                         <ModalCard
@@ -64,7 +66,6 @@ const ModalWithDraw = ({tofintechno}) => {
                         ></ModalCard>
                     )
                 })}
-                </>
             </Slider>
         </ModalWithdrawBlock>
     )
