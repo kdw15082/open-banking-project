@@ -8,8 +8,8 @@ const QRCode = require("qrcode.react");
 const QRBlock = styled.div`
     display : flex;
     flex-direction: column;
-    align-items:center;
-    margin:1rem;
+    align-items: center;
+    margin: 1rem;
 `;
 
 const QrCode = () => {

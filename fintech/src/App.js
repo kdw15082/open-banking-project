@@ -4,6 +4,8 @@ import AuthResult from "./pages/AuthResult";
 import Balance from "./pages/Balance";
 import Main from "./pages/Main";
 import QrCode from "./pages/QrCode";
+import QrcodeReader from "./pages/QrcodeReader";
+
 
 
 function App() {
@@ -24,6 +26,9 @@ function App() {
        </Route>
        <Route path="/qrcode">
          <QrCode></QrCode>
+       </Route>
+       <Route path="/qrreader">
+         <QrcodeReader></QrcodeReader>
        </Route>
      </Switch>
    </Router>
